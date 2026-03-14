@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'Cross-modal cognitive integration for LegionIO'
   spec.description   = 'Models convergence zones that bind information from different cognitive modalities ' \
-                        'into unified multi-modal representations with binding strength and coherence tracking.'
+                       'into unified multi-modal representations with binding strength and coherence tracking.'
   spec.homepage      = 'https://github.com/LegionIO/lex-cognitive-integration'
   spec.license       = 'MIT'
 

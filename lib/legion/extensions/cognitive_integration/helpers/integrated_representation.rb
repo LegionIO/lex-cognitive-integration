@@ -35,7 +35,7 @@ module Legion
 
           def disrupt!(amount: CONFLICT_PENALTY)
             @binding_strength = (@binding_strength - amount).clamp(0.0, 1.0).round(10)
-            @coherence = (@coherence - amount * 0.5).clamp(0.0, 1.0).round(10)
+            @coherence = (@coherence - (amount * 0.5)).clamp(0.0, 1.0).round(10)
             self
           end
 
@@ -50,31 +50,31 @@ module Legion
           end
 
           def quality_label
-            score = (@binding_strength * 0.6 + @coherence * 0.4).round(10)
+            score = ((@binding_strength * 0.6) + (@coherence * 0.4)).round(10)
             match = QUALITY_LABELS.find { |range, _| range.cover?(score) }
             match ? match.last : :failed
           end
 
           def quality_score
-            (@binding_strength * 0.6 + @coherence * 0.4).round(10)
+            ((@binding_strength * 0.6) + (@coherence * 0.4)).round(10)
           end
 
           def to_h
             {
-              id:                   @id,
-              signal_ids:           @signal_ids,
-              modalities:           @modalities,
-              modal_count:          modal_count,
-              multi_modal:          multi_modal?,
-              binding_strength:     @binding_strength,
-              binding_label:        binding_label,
-              coherence:            @coherence,
-              coherent:             coherent?,
-              fragmented:           fragmented?,
-              quality_score:        quality_score,
-              quality_label:        quality_label,
-              reinforcement_count:  @reinforcement_count,
-              created_at:           @created_at
+              id:                  @id,
+              signal_ids:          @signal_ids,
+              modalities:          @modalities,
+              modal_count:         modal_count,
+              multi_modal:         multi_modal?,
+              binding_strength:    @binding_strength,
+              binding_label:       binding_label,
+              coherence:           @coherence,
+              coherent:            coherent?,
+              fragmented:          fragmented?,
+              quality_score:       quality_score,
+              quality_label:       quality_label,
+              reinforcement_count: @reinforcement_count,
+              created_at:          @created_at
             }
           end
 
